@@ -5,8 +5,7 @@ import os
 app = Flask(__name__)
 port = os.environ['PORT']
 
-apikey='RGAPI-ed02dfd2-0880-43cb-a7cc-f2287305d2b7'
-region='euw1'
+apikey='RGAPI-0b9dffce-42bf-4d53-b6ca-94fbfdaff1f9'
 
 @app.route('/',methods=["post","get"])
 def inicio():
