@@ -27,4 +27,13 @@ def get_info(apikey,nombre,region):
 	else:
 		return {}
 
+## partida actual
+def get_actual(apikey,idinvocador,region):
+	url='https://'+region+'.api.riotgames.com/lol/spectator/v3/active-games/by-summoner/'+str(idinvocador)
+	doc_req=get_requests(apikey,url)
+	if doc_req:
+		return doc_req
+	else:
+		return {}
+
 

@@ -1,4 +1,15 @@
 {% extends "base.html" %}
+
+{% block menu %}
+<div class="navbar-collapse collapse">
+  <ul class="nav navbar-nav navbar-right">
+    <li class="active"><a href="/">INVOCADOR</a></li>
+    <li><a href="/historial">HISTORIAL</a></li>
+    <li><a href="/maestrias">MAESTRIAS</a></li>
+  </ul>
+</div><!--/.nav-collapse -->
+{% endblock %}
+
 {% block contenido2 %}
 
 <article>
@@ -6,10 +17,29 @@
 		<h2>PERFIL LOL</h2>
 	</header>
 	<h3>Imagen del perfil: </h3>
-		<p><img src="{{doc['icono']}}"></p>
-	<h3>Nombre de usuario:</h3> {{doc['name']}}
-	<h3>ID de LOL:</h3> {{doc['id']}}
-	<h3>Nivel del perfil:</h3> {{doc['summonerLevel']}}
+		<p><img src="{{doc_info['icono']}}"></p>
+	<h3>Nombre de usuario:</h3> {{doc_info['name']}}
+	<h3>ID de LOL:</h3> {{doc_info['id']}}
+	<h3>Nivel del perfil:</h3> {{doc_info['summonerLevel']}}
+</article>
+
+<article>
+	<header>
+		<h2>PARTIDA ACTUAL</h2>
+	</header>
+	<h3>Modo de juego: </h3> {{doc_actual['gameMode']}} <br><br>
+	<h3>Ver partida actual: </h3>
+		<p>cd "C:\Program Files (x86)\Riot Games\League of Legends\RADS\solutions\lol_game_client_sln\releases\0.0.1.219\deploy"</p>
+		<p>"League of Legends.exe" 8394 "LeagueClient.exe" "/path" "spectator spectator.euw1.lol.riotgames.com:80 {{doc_actual['observers']['encryptionKey']}} {{doc_actual['gameId']}} {{doc_actual['platformId']}}" </p>
+		<br><br>
+	<h3>Jugadores: </h3>
+	{% for i in jugadores %}
+		<br>
+        {{i['summonerName']}}
+        {{i['championId']}}
+        <br>
+		{% endfor %}
 </article>
 
 {% endblock %}
+

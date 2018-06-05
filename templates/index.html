@@ -1,19 +1,40 @@
 {% extends "base.html" %}
 
+{% block menu %}
+<div class="navbar-collapse collapse">
+  <ul class="nav navbar-nav navbar-right">
+    <li class="active"><a href="/">INVOCADOR</a></li>
+    <li><a href="/historial">HISTORIAL</a></li>
+    <li><a href="/maestrias">MAESTRIAS</a></li>
+  </ul>
+</div><!--/.nav-collapse -->
+{% endblock %}
+
 {% block contenido1 %}
-
-<h1>Busca el perfil deseado</h1>                
-<form action="/" method="post">
-  <div>
-      <fieldset>
-          <legend>Aqui se pone el nombre del invocador. </legend>
-          <br>
-        Nombre de Usuario: <input type="text" name="nombre" value="" />
-        <br/>
-      </fieldset>
-      <input type="reset" value="Borrar información">
-    <input type="submit" value="Enviar">
-  </div>
-</form>
-
+<div class="invocador">
+	<h1>Busqueda de Invocador</h1>                
+	<form action="/" method="post">
+  		<div class="form-invocador">
+      		<fieldset>
+          		<legend>Aqui se pone el nombre del invocador. </legend>
+        		Nombre de Usuario: <input type="text" name="nombre" required value="" />
+        		<select name="region" required>        			
+   					<option value="euw1">EU Oeste(EUW)</option>
+   					<option value="ru">Rusia(RU)</option> 
+   					<option value="kr">Korea(KR)</option> 
+   					<option value="br1">Brasil(BR)</option>
+   					<option value="oc1">Oceanía(OCE)</option>
+   					<option value="jp1">Japón(JP)</option>
+   					<option value="na1">NorteAmérica(NA)</option>
+   					<option value="eun1">EU Nórdica & Este(EUNE)</option>
+   					<option value="tr1">Turquía(TR)</option> 
+   					<option value="la1">Latinoamérica Norte(LAN)</option> 
+   					<option value="la2">Latinoamérica Sur(LAS)</option> 
+				</select>
+        		<input type="submit" value="Enviar">
+        		<br/>
+      		</fieldset>    		
+  		</div>
+	</form>
+</div>
 {% endblock %}
