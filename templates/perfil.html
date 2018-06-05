@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block contenido2 %}
+
+<article>
+	<header>
+		<h2>PERFIL LOL</h2>
+	</header>
+	<h3>Imagen del perfil: </h3>
+		<p><img src="{{doc['icono']}}"></p>
+	<h3>Nombre de usuario:</h3> {{doc['name']}}
+	<h3>ID de LOL:</h3> {{doc['id']}}
+	<h3>Nivel del perfil:</h3> {{doc['summonerLevel']}}
+</article>
+
+{% endblock %}

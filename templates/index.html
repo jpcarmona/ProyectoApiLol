@@ -1,1 +1,19 @@
 {% extends "base.html" %}
+
+{% block contenido1 %}
+
+<h1>Busca el perfil deseado</h1>                
+<form action="/" method="post">
+  <div>
+      <fieldset>
+          <legend>Aqui se pone el nombre del invocador. </legend>
+          <br>
+        Nombre de Usuario: <input type="text" name="nombre" value="" />
+        <br/>
+      </fieldset>
+      <input type="reset" value="Borrar información">
+    <input type="submit" value="Enviar">
+  </div>
+</form>
+
+{% endblock %}
