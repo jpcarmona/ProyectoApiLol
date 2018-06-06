@@ -36,8 +36,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Paragraph & Typographic */
 p {
-    line-height: 28px;
-    margin-bottom: 25px;
+    line-height: 15px;
+    margin-bottom: 15px;
 }
 
 .centered {
@@ -477,4 +477,5 @@ input[type=submit]:hover {
     color: #2279CF;
     font-size: 18px;
     font-weight: bold;
+    line-height: 10000px;
 }

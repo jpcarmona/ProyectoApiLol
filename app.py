@@ -18,9 +18,11 @@ def inicio():
 		doc_info =get_info(apikey,nombre,region)
 		if doc_info:
 			doc_actual =get_actual(apikey,doc_info['id'],region)
-			jugadores =doc_actual['participants']
-			lista=[doc_info,doc_actual,jugadores]
 			plantilla =('perfil.html')
+			partida={}
+			if doc_actual:
+				partida =partida_actual(doc_actual['participants'],apikey,region)
+			lista=[doc_info,doc_actual,partida]
 		else:
 			plantilla =('index.html')
 			lista=[1]
