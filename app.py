@@ -5,7 +5,8 @@ import os
 app = Flask(__name__)
 port = os.environ['PORT']
 
-apikey='RGAPI-12d9f866-273b-4c44-b14e-987ed3700b53'
+apikey=get_apikey()
+save_champions(apikey)
 
 @app.route('/',methods=["post","get"])
 def inicio():
@@ -17,6 +18,7 @@ def inicio():
 		region =request.form.get("region")
 		doc_info =get_info(apikey,nombre,region)
 		if doc_info:
+			doc_info['liga']=get_liga(apikey,doc_info['id'],region)
 			doc_actual =get_actual(apikey,doc_info['id'],region)
 			plantilla =('perfil.html')
 			partida={}

@@ -13,27 +13,32 @@
 
 {% block contenido2 %}
 
-<article>
-	<header>
-		<h2>PERFIL LOL</h2>
-	</header>
-	<h3>Imagen del perfil: </h3>
-		<p><img src="{{lista[0]['icono']}}"></p>
-	<h3>Nombre de usuario:</h3> {{lista[0]['name']}}
-	<h3>Nivel del perfil:</h3> {{lista[0]['summonerLevel']}}
-</article>
+<div class="info_invocador">
+	<h2>INFORMACION DEL PERFIL</h2>	
+	<p><img src="{{lista[0]['icono']}}" height="100" width="100"</p>
+	<h3>Nombre de invocador:</h3> {{lista[0]['name']}}
+	<h3>Nivel de invocador:</h3> {{lista[0]['summonerLevel']}}
+	{% if lista[0]['liga'] %}
+		<h3>Liga:</h3> {{lista[0]['liga']['posicion']}} 
+		<h3>Liga:</h3> {{lista[0]['liga']['liga']}} 
+		<h3>Liga:</h3> {{lista[0]['liga']['puntos']}}
+		<h3>Liga:</h3>
+	{% else -%}
+		<h3>Liga:</h3> UNRANKED
+	{% endif %}
+</div>
 
 {% if lista[1] %}
+<div class="info_invocador">
 	<article>
 		<header>
 			<h2>PARTIDA ACTUAL</h2>
 		</header>
-		<h3>Modo de juego: </h3> {{lista[1]['gameMode']}} <br><br>
-		
-		<h3>Jugadores equipo1: </h3>
-		{% for equipo in lista[2].values %}
-			<br>
-        		{% for numero,jugador in equipo['equipo1'].items %}
+		<h3>Modo de juego: </h3> {{lista[1]['gameMode']}} <br><br>		
+		<h3>Jugadores equipo1: </h3>		
+		<br>
+        	{% for numero,jugador in lista[2]['equipo1'].items() %}
+        		<div>
         			<h3>{{numero}} </h3>
         			<h3>Imagen del perfil: </h3>
 						<p><img src="{{jugador['icono']}}"></p>
@@ -46,41 +51,44 @@
         				<h3>Liga :</h3> 
         					<p>UNRANKED</p>
         			{% endif %}
-        		{% endfor %}
-        	<br>
-		{% endfor %}
+        		</div>
+        	{% endfor %}
+        <br>
 
 		<h3>Jugadores equipo2: </h3>
-		{% for equipo in lista[2].values %}
 			<br>
-        		{% for numero,jugador in equipo['equipo2'].items %}
-        			<h3>{{numero}} </h3>
-        			<h3>Imagen del perfil: </h3>
-						<p><img src="{{jugador['icono']}}"></p>
-        			<h3>Nombre de invocador:</h3> {{jugador['nombre']}}
-        			<h3>Campeón:</h3> {{jugador['campeon']}}
-        			{% if jugador['liga'] %}
-        				<h3>Liga :</h3> 
-        					<p>{{jugador['liga']['liga']}} {{jugador['liga']['posicion']}}</p>
-        			{% else -%}
-        				<h3>Liga :</h3> 
-        					<p>UNRANKED</p>
-        			{% endif %}
-        		{% endfor %}
-        	<br>
-		{% endfor %}
+        {% for numero,jugador in lista[2]['equipo1'].items() %}
+			<div>
+        		<h3>{{numero}} </h3>
+        		<h3>Imagen del perfil: </h3>
+					<p><img src="{{jugador['icono']}}"></p>
+        		<h3>Nombre de invocador:</h3> {{jugador['nombre']}}
+        		<h3>Campeón:</h3> {{jugador['campeon']}}
+        		{% if jugador['liga'] %}
+        			<h3>Liga :</h3> 
+        				<p>{{jugador['liga']['liga']}} {{jugador['liga']['posicion']}}</p>
+        		{% else -%}
+        			<h3>Liga :</h3> 
+        				<p>UNRANKED</p>
+        		{% endif %}
+        	</div>
+        {% endfor %}
+        <br>
 
 		<h3>Ver partida actual: </h3>
 		<p>cd "C:\Program Files (x86)\Riot Games\League of 	Legends\RADS\solutions\lol_game_client_sln\releases\0.0.1.219\deploy"</p>
 		<p>"League of Legends.exe" 8394 "LeagueClient.exe" "/path" "spectator spectator.euw1.lol.riotgames.com:80 {{lista[1]['observers']['encryptionKey']}} {{lista[1]['gameId']}} 	{{lista[1]['platformId']}}" </p>
 			<br><br>
 	</article>
+</div>
 {% else -%}
+<div class="info_invocador">
 	<article>
 		<header>
 			<h2>PARTIDA ACTUAL</h2>
 		</header>
 		<h3>Este jugador no está jugando actualmente </h3>	
 	</article>
+</div>
 {% endif %}
 {% endblock %}
