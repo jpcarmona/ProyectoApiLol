@@ -6,7 +6,7 @@ app = Flask(__name__)
 port = os.environ['PORT']
 
 apikey=get_apikey()
-save_champions(apikey)
+#save_champions(apikey)
 
 @app.route('/',methods=["post","get"])
 def inicio():

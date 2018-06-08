@@ -100,14 +100,14 @@ def partida_actual(partida,apikey,region):
 	version=get_version()
 	doc_req['equipo1']={}
 	doc_req['equipo2']={}
+	n1=1
+	n2=1
 	for jugador in partida:
 		invocador={}        
 		invocador['icono']='http://ddragon.leagueoflegends.com/cdn/'+version+'/img/profileicon/'+str(jugador['profileIconId'])+'.png'
 		invocador['campeon']=get_champion(jugador['championId'])
 		invocador['nombre']=jugador['summonerName']
-		invocador['liga']=get_liga(apikey,jugador['summonerId'],region)
-		n1=1
-		n2=1
+		invocador['liga']=get_liga(apikey,jugador['summonerId'],region)		
 		if jugador['teamId']==100:			
 			doc_req['equipo1']['jugador'+str(n1)]=invocador
 			n1+=1
