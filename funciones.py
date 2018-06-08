@@ -118,3 +118,17 @@ def partida_actual(partida,apikey,region):
 
 
 
+def get_fullinfo(apikey,nombre,region):
+	doc_info =get_info(apikey,nombre,region)
+	if doc_info:
+		doc_info['liga']=get_liga(apikey,doc_info['id'],region)
+		doc_actual =get_actual(apikey,doc_info['id'],region)
+		plantilla =('perfil.html')
+		partida={}
+		if doc_actual:
+			partida =partida_actual(doc_actual['participants'],apikey,region)
+		lista=[doc_info,doc_actual,partida]
+	else:
+		plantilla =('index.html')
+		lista=[1]
+	return plantilla,lista,doc_info['id']
