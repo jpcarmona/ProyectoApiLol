@@ -478,7 +478,7 @@ input[type=submit]:hover {
 /* INVOCADOR */
 
 .info_invocador{
-    margin: 15% 0 25% 0;
+    margin: 100px 0 100px 0;
     border: 1px solid #2279CF;
     padding-bottom: 20px;
     background: black;
@@ -493,7 +493,7 @@ input[type=submit]:hover {
 }
 
 .partida_invocador {
-    margin: 15% 0 25% 0;
+    margin-bottom:25%;
     border: 1px solid #2279CF;
     padding-bottom: 20px;
     background: black;
@@ -515,13 +515,13 @@ input[type=submit]:hover {
     font-family: monospace;
     font-size: 16px;
     border: 1px solid #2279CF;
-    height: 200px !important;
+    height: 150px !important;
     margin: 20px 10px 20px 10px !important;
 }
 
 .comandos p{
     position: relative;
     background: white;
-    margin: 20px 10px 20px 10px !important;
+    margin: 10px 10px 10px 10px !important;
     color: black !important;
 }
