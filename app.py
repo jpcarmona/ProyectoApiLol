@@ -16,15 +16,18 @@ def inicio():
 		plantilla =('index.html')
 		lista=[]
 	else:
+		session.clear()
 		nombre =request.form.get("nombre")
 		region =request.form.get("region")
-		plantilla,lista,session['idinvocador']=get_fullinfo(apikey,nombre,region)
-		session['lista']=lista
+		plantilla,lista=get_fullinfo(apikey,nombre,region)
+		if lista[0]!=1:
+			session['idinvocador']=lista[0]['id']
+			session['lista']=lista
 	return render_template(plantilla,lista=lista)
 
 @app.route('/perfil',methods=["post","get"])
 def perfil():
-	if session['lista']:
+	if session:
 		plantilla ='perfil.html'
 		lista=session['lista']
 	else:

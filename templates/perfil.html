@@ -14,22 +14,39 @@
 {% block contenido2 %}
 
 <div class="info_invocador">
-	<h2>INFORMACION DEL PERFIL</h2>	
-	<p><img src="{{lista[0]['icono']}}" height="100" width="100"</p>
-	<h3>Nombre de invocador:</h3> {{lista[0]['name']}}
-	<h3>Nivel de invocador:</h3> {{lista[0]['summonerLevel']}}
-	{% if lista[0]['liga'] %}
-		<h3>Liga:</h3> {{lista[0]['liga']['posicion']}} 
-		<h3>Liga:</h3> {{lista[0]['liga']['liga']}} 
-		<h3>Liga:</h3> {{lista[0]['liga']['puntos']}}
-		<h3>Liga:</h3>
-	{% else -%}
-		<h3>Liga:</h3> UNRANKED
-	{% endif %}
+	<h2>INFORMACION DEL PERFIL</h2>
+	<div>
+		<div>
+			<img src="{{lista[0]['icono']}}" height="100" width="100">
+			<br>
+			<p>{{lista[0]['name']}}</p>
+			<p>NIVEL: {{lista[0]['summonerLevel']}}</p>
+		</div>	
+		{% if lista[0]['liga'] %}
+			<div>
+				<h3>Liga (solo 5x5):</h3>
+				<img src="/static/img/ligas/{{lista[0]['liga']['liga']}}_{{lista[		0]['liga']['posicion']}}.png".lower() height="100" width="100">
+			</div>
+			<div>
+				<br>
+				<p>{{lista[0]['liga']['liga']}} {{lista[0]['liga']['posicion']}} </p>
+				<p>Puntos: {{lista[0]['liga']['puntos']}}</p>
+				<p>Partidas ganadas: {{lista[0]['liga']['ganadas']}}</p>
+				<p>Partidas perdidas: {{lista[0]['liga']['perdidas']}}</p>
+			</div>
+		{% else -%}
+			<div>
+				<h3>Liga:</h3>
+				<img src="/static/img/ligas/provisional.png">
+				<p>UNRANKED</p>
+			</div> 
+		{% endif %}
+	</div>
 </div>
 
+
 {% if lista[1] %}
-<div class="info_invocador">
+<div class="partida_invocador">
 	<article>
 		<header>
 			<h2>PARTIDA ACTUAL</h2>
@@ -82,7 +99,7 @@
 	</article>
 </div>
 {% else -%}
-<div class="info_invocador">
+<div class="partida_invocador">
 	<article>
 		<header>
 			<h2>PARTIDA ACTUAL</h2>
