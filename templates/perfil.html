@@ -3,10 +3,10 @@
 {% block menu %}
 <div class="navbar-collapse collapse">
   <ul class="nav navbar-nav navbar-right">
-    <li><a href="/">INICIO</a></li>
-    <li class="active"><a href="/perfil">INVOCADOR</a></li>
-    <li><a href="/historial">HISTORIAL</a></li>
-    <li><a href="/maestrias">MAESTRIAS</a></li>
+	<li><a href="/">INICIO</a></li>
+	<li class="active"><a href="/perfil">INVOCADOR</a></li>
+	<li><a href="/historial">HISTORIAL</a></li>
+	<li><a href="/maestrias">MAESTRIAS</a></li>
   </ul>
 </div><!--/.nav-collapse -->
 {% endblock %}
@@ -24,8 +24,9 @@
 		</div>	
 		{% if lista[0]['liga'] %}
 			<div>
-				<h3>Liga (solo 5x5):</h3>
+				<h3>Liga (solo 5x5)</h3>
 				<img src="/static/img/ligas/{{lista[0]['liga']['liga']}}_{{lista[		0]['liga']['posicion']}}.png" height="100" width="100">
+				<br>
 			</div>
 			<div>
 				<br>
@@ -36,76 +37,72 @@
 			</div>
 		{% else -%}
 			<div>
-				<h3>Liga:</h3>
-				<img src="/static/img/ligas/provisional.png">
+				<br>
 				<p>UNRANKED</p>
-			</div> 
+				<img src="/static/img/ligas/provisional.png" height="100" width="100">
+			</div>				
 		{% endif %}
 	</div>
 </div>
 
 
 {% if lista[1] %}
-<div class="partida_invocador">
-	<article>
-		<header>
-			<h2>PARTIDA ACTUAL</h2>
-		</header>
-		<h3>Modo de juego: </h3> {{lista[1]['gameMode']}} <br><br>		
-		<h3>Jugadores equipo1: </h3>		
+<div class="partida_invocador">		
+	<h2>PARTIDA ACTUAL</h2>		
+	<h3>Modo de juego: </h3> {{lista[1]['gameMode']}} <br><br>	
+	<br>
+	<div>
+	{% for numero,jugador in lista[2]['equipo1'].items() %}
+		<div>
+			<p>{{jugador['nombre']}}</p>
+			<img src="{{jugador['icono']}}" height="200" width="100">			
+			<p>{{jugador['campeon']}}</p> 
+			{% if jugador['liga'] %}
+				<h3>Liga :</h3> 
+				<p>{{jugador['liga']['liga']}} {{jugador['liga']['posicion']}}</p>
+				<img src="/static/img/ligas/{{lista[0]['liga']['liga']}}_{{lista[		0]['liga']['posicion']}}.png" height="100" width="100">
+			{% else -%}
+				<h3>Liga :</h3> 
+				<p>UNRANKED</p>
+				<img src="/static/img/ligas/provisional.png" height="100" width="100">
+			{% endif %}
+		</div>
+	{% endfor %}
+	</div>
+	<br>
+	<h2>VS.</h2>
+	<br>
+	<div>
+	{% for numero,jugador in lista[2]['equipo2'].items() %}
+		<div>
+			<p>{{jugador['nombre']}}</p>
+			<img src="{{jugador['icono']}}" height="200" width="100">			
+			<p>{{jugador['campeon']}}</p> 
+			{% if jugador['liga'] %}
+				<h3>Liga :</h3> 
+				<p>{{jugador['liga']['liga']}} {{jugador['liga']['posicion']}}</p>
+				<img src="/static/img/ligas/{{lista[0]['liga']['liga']}}_{{lista[		0]['liga']['posicion']}}.png" height="100" width="100">
+			{% else -%}
+				<h3>Liga :</h3> 
+				<p>UNRANKED</p>
+				<img src="/static/img/ligas/provisional.png" height="100" width="100">
+			{% endif %}
+		</div>
+	{% endfor %}
+	</div>
+	<br>
+	<h3>Ver partida actual: </h3>
+	<div class="comandos">
 		<br>
-        	{% for numero,jugador in lista[2]['equipo1'].items() %}
-        		<div>
-        			<h3>{{numero}} </h3>
-        			<h3>Imagen del perfil: </h3>
-						<p><img src="{{jugador['icono']}}"></p>
-        			<h3>Nombre de invocador:</h3> {{jugador['nombre']}}
-        			<h3>Campeón:</h3> {{jugador['campeon']}}
-        			{% if jugador['liga'] %}
-        				<h3>Liga :</h3> 
-        					<p>{{jugador['liga']['liga']}} {{jugador['liga']['posicion']}}</p>
-        			{% else -%}
-        				<h3>Liga :</h3> 
-        					<p>UNRANKED</p>
-        			{% endif %}
-        		</div>
-        	{% endfor %}
-        <br>
-
-		<h3>Jugadores equipo2: </h3>
-			<br>
-        {% for numero,jugador in lista[2]['equipo2'].items() %}
-			<div>
-        		<h3>{{numero}} </h3>
-        		<h3>Imagen del perfil: </h3>
-					<p><img src="{{jugador['icono']}}"></p>
-        		<h3>Nombre de invocador:</h3> {{jugador['nombre']}}
-        		<h3>Campeón:</h3> {{jugador['campeon']}}
-        		{% if jugador['liga'] %}
-        			<h3>Liga :</h3> 
-        				<p>{{jugador['liga']['liga']}} {{jugador['liga']['posicion']}}</p>
-        		{% else -%}
-        			<h3>Liga :</h3> 
-        				<p>UNRANKED</p>
-        		{% endif %}
-        	</div>
-        {% endfor %}
-        <br>
-
-		<h3>Ver partida actual: </h3>
-		<p>cd "C:\Program Files (x86)\Riot Games\League of 	Legends\RADS\solutions\lol_game_client_sln\releases\0.0.1.219\deploy"</p>
-		<p>"League of Legends.exe" 8394 "LeagueClient.exe" "/path" "spectator spectator.euw1.lol.riotgames.com:80 {{lista[1]['observers']['encryptionKey']}} {{lista[1]['gameId']}} 	{{lista[1]['platformId']}}" </p>
-			<br><br>
-	</article>
+		<p>cd "C:\Program Files (x86)\Riot Games\League of Legends\RADS\solutions\lol_game_client_sln\releases\0.0.1.219\deploy"</p>
+		<hr/>
+		<p>"League of Legends.exe" 8394 "LeagueClient.exe" "/path" "spectator spectator.euw1.lol.riotgames.com:80 {{lista[1]['observers']['encryptionKey']}}{{lista[1]['gameId']}} 	{{lista[1]['platformId']}}" </p>
+	</div>
 </div>
 {% else -%}
 <div class="partida_invocador">
-	<article>
-		<header>
-			<h2>PARTIDA ACTUAL</h2>
-		</header>
-		<h3>Este jugador no está jugando actualmente </h3>	
-	</article>
+	<h2>PARTIDA ACTUAL</h2>
+	<h3>Este jugador no está jugando actualmente </h3>	
 </div>
 {% endif %}
 {% endblock %}

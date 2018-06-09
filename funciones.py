@@ -40,7 +40,7 @@ def get_info(apikey,nombre,region):
 def get_champions(apikey):
 	region='euw1'
 	version=get_version()
-	url='https://'+region+'.api.riotgames.com/lol/static-data/v3/champions?locale=es_ES&version='+version+'&dataById=true'
+	url='https://'+region+'.api.riotgames.com/lol/static-data/v3/champions?locale=es_ES&version='+version+'&champListData=image&tags=image&dataById=true'
 	doc_req=get_requests(apikey,url)
 	return doc_req['data']
 
@@ -50,7 +50,9 @@ def save_champions(apikey):
 	doc_req={}
 	with open('campeones.json', 'w') as fichero:
 		for key,value in doc_champions.items():
-			doc_req[key]=value['name']
+			doc_req[key]={}
+			doc_req[key]['nombre']=value['name']
+			doc_req[key]['imagen']=value['key']
 		json.dump(doc_req, fichero)
 
 ## obtener campeon
@@ -103,9 +105,10 @@ def partida_actual(partida,apikey,region):
 	n1=1
 	n2=1
 	for jugador in partida:
-		invocador={}		
-		invocador['campeon']=get_champion(jugador['championId'])
-		invocador['icono']='http://ddragon.leagueoflegends.com/cdn/img/champion/loading/'+invocador['campeon']+'_0.jpg'
+		invocador={}
+		campeon=get_champion(jugador['championId'])
+		invocador['campeon']=campeon['nombre']
+		invocador['icono']='http://ddragon.leagueoflegends.com/cdn/img/champion/loading/'+campeon['imagen']+'_0.jpg'
 		invocador['nombre']=jugador['summonerName']
 		invocador['liga']=get_liga(apikey,jugador['summonerId'],region)		
 		if jugador['teamId']==100:			

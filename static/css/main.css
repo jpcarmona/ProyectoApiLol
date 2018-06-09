@@ -489,7 +489,7 @@ input[type=submit]:hover {
 .info_invocador div div{
     width: 33%;
     float: left;
-    margin-top: 20px;
+    padding: : 20px 0 20px 0;
 }
 
 .partida_invocador {
@@ -497,5 +497,31 @@ input[type=submit]:hover {
     border: 1px solid #2279CF;
     padding-bottom: 20px;
     background: black;
-    opacity: 0.7;
+    opacity: 0.7;    
+}
+
+.partida_invocador div{
+    height: 450px; 
+}
+
+.partida_invocador div div{
+    width: 20%;
+    float: left;
+    padding: 20px 0 20px 0;
+}
+
+.comandos{
+    position: relative;
+    font-family: monospace;
+    font-size: 16px;
+    border: 1px solid #2279CF;
+    height: 200px !important;
+    margin: 20px 10px 20px 10px !important;
+}
+
+.comandos p{
+    position: relative;
+    background: white;
+    margin: 20px 10px 20px 10px !important;
+    color: black !important;
 }
