@@ -11,16 +11,18 @@ apikey=get_apikey()
 #save_champions(apikey)
 
 @app.route('/',methods=["post","get"])
-def inicio():
+def inicio():	
 	if request.method == "GET":
 		plantilla =('index.html')
-		lista=[]
+		region='euw1'
+		gratuitos=get_freechampions(apikey,region)
+		lista=[gratuitos,0]
 	else:
 		session.clear()
 		nombre =request.form.get("nombre")
 		region =request.form.get("region")
 		plantilla,lista=get_fullinfo(apikey,nombre,region)
-		if lista[0]!=1:
+		if lista[1]!=1:
 			session['idinvocador']=lista[0]['id']
 			session['lista']=lista
 	return render_template(plantilla,lista=lista)
@@ -32,7 +34,9 @@ def perfil():
 		lista=session['lista']
 	else:
 		plantilla =('index.html')
-		lista=[]
+		region='euw1'
+		gratuitos=get_freechampions(apikey,region)
+		lista=[gratuitos,0]
 	return render_template(plantilla,lista=lista)
 
 @app.route('/historial',methods=["post","get"])
@@ -44,7 +48,6 @@ def historial():
 def maestrias():
 	if request.method == "GET":
 		return render_template('maestrias.html')
-		
 
 app.run('0.0.0.0',int(port), debug=True)
 

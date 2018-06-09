@@ -3,64 +3,66 @@
 <html lang="en">
 
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="/static/img/favicon.jpg" type="image/gif">
-    <title>LOL Player Unknown's</title>
-    <!-- Bootstrap core CSS -->
-    <link href="/static/css/bootstrap.css" rel="stylesheet">
-    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="/static/css/main.css" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="icon" href="/static/img/favicon.jpg" type="image/gif">
+	<title>LOL Player Unknown's</title>
+	<!-- Bootstrap core CSS -->
+	<link href="/static/css/bootstrap.css" rel="stylesheet">
+	<link href="/static/css/font-awesome.min.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="/static/css/main.css" rel="stylesheet">
   </head>
 
   <body>
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">L<img src="/static/img/gragas.png" height="42" width="42" alt="">L Player Unknown's</a>
-        </div>
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="container">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		  <a class="navbar-brand" href="/">L<img src="/static/img/gragas.png" height="42" width="42" alt="">L Player Unknown's</a>
+		</div>
 
-        {% block menu %}{% endblock %}
+		{% block menu %}{% endblock %}
 
-      </div>
-    </div>
+	  </div>
+	</div>
 
-    <div id="headerwrap">
+	<div id="headerwrap">
 	   <div class="container">
-		    <div class="row centered">
+			<div class="row centered">
 
-			   {% block contenido1 %}{% endblock %}
-			   {% block contenido2 %}{% endblock %}
-			   {% block contenido3 %}{% endblock %}
+				{% block contenido1 %}{% endblock %}
+				{% block contenido2 %}{% endblock %}
+				{% block contenido3 %}{% endblock %}
+				{% block contenido4 %}{% endblock %}
+				{% block contenido5 %}{% endblock %}
 
-		    </div><!-- row -->
+			</div><!-- row -->
 	   </div><!-- container -->
-    </div><!-- headerwrap -->
+	</div><!-- headerwrap -->
 
 		<!-- FOOTER -->
 	  <div id="f">
 		   <div class="container">
 			  <div class="row centered">
 				  <p>© Copyright 2018, Juan Pedro Carmona Romero<p>
-          <p>JP's Corporation<p><br/> 
-          <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="#" src="/static/img/ccommons.png"></a> 
-   		
+		  <p>JP's Corporation<p><br/> 
+		  <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="#" src="/static/img/ccommons.png"></a> 
+		
 			  </div><!-- row -->
 		   </div><!-- container -->
 	  </div><!-- Footer -->
 
-      <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="/static/js/bootstrap.min.js"></script>
+	  <!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="/static/js/bootstrap.min.js"></script>
 
   </body>
 </html>

@@ -70,6 +70,16 @@ def get_champion(id):
 	campeon=campeones[str(id)]
 	return campeon
 
+## campeones gratuitos
+def get_freechampions(apikey,region):
+	url='https://'+region+'.api.riotgames.com/lol/platform/v3/champions?freeToPlay=true'
+	doc=get_requests(apikey,url)
+	doc_req={}
+	for champion in doc['champions']:
+		campeon=get_champion(champion['id'])
+		doc_req[campeon['nombre']]='http://ddragon.leagueoflegends.com/cdn/img/champion/loading/'+campeon['imagen']+'_0.jpg'
+	return doc_req
+
 ## posicion rankeds
 def get_liga(apikey,idinvocador,region):
 	doc_req={}
@@ -133,5 +143,7 @@ def get_fullinfo(apikey,nombre,region):
 		lista=[doc_info,doc_actual,partida]
 	else:
 		plantilla =('index.html')
-		lista=[1]
+		region='euw1'
+		gratuitos=get_freechampions(apikey,region)
+		lista=[gratuitos,1]
 	return plantilla,lista

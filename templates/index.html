@@ -1,73 +1,73 @@
 {% extends "base.html" %}
 
 {% block menu %}
-<div class="navbar-collapse collapse">
-  <ul class="nav navbar-nav navbar-right">
-    <li class="active"><a href="/">INICIO</a></li>
-    <li><a href="/perfil">INVOCADOR</a></li>
-    <li><a href="/historial">HISTORIAL</a></li>
-    <li><a href="/maestrias">MAESTRIAS</a></li>
-  </ul>
-</div><!--/.nav-collapse -->
+
+	<div class="navbar-collapse collapse">
+		<ul class="nav navbar-nav navbar-right">
+			<li class="active"><a href="/">INICIO</a></li>
+			<li><a href="/perfil">INVOCADOR</a></li>
+			<li><a href="/historial">HISTORIAL</a></li>
+			<li><a href="/maestrias">MAESTRIAS</a></li>
+		</ul>
+	</div>
+
 {% endblock %}
 
 {% block contenido1 %}
-{% if lista %}
-  <div class="invocador">
-	 <h2>Jugadores de LOL desconocidos</h2>                
-	 <form action="/" method="post">
-  		  <div class="form-invocador">
-      		  <fieldset>
-          	 <legend>Busqueda de Invocador </legend>
-        		  <label>Invocador:</label>
-                <input type="text" name="nombre"/>
-        		  <select name="region">        			
-   					    <option value="euw1">EU Oeste (EUW)</option>
-   					    <option value="ru">Rusia (RU)</option> 
-   					    <option value="kr">Korea (KR)</option> 
-   					    <option value="br1">Brasil (BR)</option>
-   					    <option value="oc1">Oceanía (OCE)</option>
-   					    <option value="jp1">Japón (JP)</option>
-   					    <option value="na1">NorteAmérica (NA)</option>
-   					    <option value="eun1">EU Nórdica & Este (EUNE)</option>
-   					    <option value="tr1">Turquía (TR)</option> 
-   					    <option value="la1">Latinoamérica Norte (LAN)</option> 
-   					    <option value="la2">Latinoamérica Sur (LAS)</option> 
-				      </select>
-        		  <input type="submit" value="Buscar Invocador">
-        		  <br/>
-      		  </fieldset>    		
-  		  </div>
-	 </form>   
-   <h2>INVOCADOR NO ENCONTRADO</h2>
-  </div>
-{% else -%}
-  <div class="invocador">
-   <h2>Jugadores de LOL desconocidos</h2>                
-   <form action="/" method="post">
-        <div class="form-invocador">
-            <fieldset>
-             <legend>Busqueda de Invocador </legend>
-              <label>Invocador:</label>
-                <input type="text" name="nombre" required/>
-              <select name="region">             
-                <option value="euw1">EU Oeste (EUW)</option>
-                <option value="ru">Rusia (RU)</option> 
-                <option value="kr">Korea (KR)</option> 
-                <option value="br1">Brasil (BR)</option>
-                <option value="oc1">Oceanía (OCE)</option>
-                <option value="jp1">Japón (JP)</option>
-                <option value="na1">NorteAmérica (NA)</option>
-                <option value="eun1">EU Nórdica & Este (EUNE)</option>
-                <option value="tr1">Turquía (TR)</option> 
-                <option value="la1">Latinoamérica Norte (LAN)</option> 
-                <option value="la2">Latinoamérica Sur (LAS)</option> 
-              </select>
-              <input type="submit" value="Buscar Invocador">
-              <br/>
-            </fieldset>
-        </div>
-   </form>
-  </div>
-{% endif %}
+
+	<div class="invocador">
+		<h2>Jugadores de LOL desconocidos</h2>
+		<form action="/" method="post">
+			<div class="form-invocador">
+				<fieldset>
+				<legend>Busqueda de Invocador </legend>
+					<label>Invocador:</label>
+					<input type="text" name="nombre"/>
+					<select name="region">
+							<option value="euw1">EU Oeste (EUW)</option>
+							<option value="ru">Rusia (RU)</option>
+							<option value="kr">Korea (KR)</option>
+							<option value="br1">Brasil (BR)</option>
+							<option value="oc1">Oceanía (OCE)</option>
+							<option value="jp1">Japón (JP)</option>
+							<option value="na1">NorteAmérica (NA)</option>
+							<option value="eun1">EU Nórdica & Este (EUNE)</option>
+							<option value="tr1">Turquía (TR)</option>
+							<option value="la1">Latinoamérica Norte (LAN)</option>
+							<option value="la2">Latinoamérica Sur (LAS)</option>
+						</select>
+					<input type="submit" value="Buscar Invocador">
+					<br/>
+				</fieldset>
+			</div>
+		</form>
+
+		{% if lista[1]==1 %}
+
+			<h2>INVOCADOR NO ENCONTRADO</h2>
+
+		{% endif %}
+
+	</div>
+
+{% endblock %}
+
+{% block contenido2 %}
+
+	<div class="campeones_gratis">
+		<h2>CAMPEONES GRATUITOS</h2>
+		<div>
+
+		{% for campeon,imagen in lista[0].items() %}
+
+			<div>
+				<img src="{{imagen}}" height="200" width="100">
+				<p>{{campeon}}</p>
+			</div>
+
+		{% endfor %}
+
+		</div>
+	</div>
+
 {% endblock %}
