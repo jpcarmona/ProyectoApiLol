@@ -13,13 +13,13 @@
 
 {% endblock %}
 
-{% block contenido4 %}
+{% block contenido3 %}
 
 	<div class="info_invocador">
 		<h2>INFORMACION DEL PERFIL</h2>
 		<div>
 			<div>
-				<img src="{{lista[0]['icono']}}" height="100" width="100">
+				<img src="{{lista[0]['icono']}}" height="100" width="100" alt=''>
 				<br>
 				<p>{{lista[0]['name']}}</p>
 				<p>NIVEL: {{lista[0]['summonerLevel']}}</p>
@@ -32,11 +32,11 @@
 
 					{% if lista[0]['liga']['liga']=='MASTER' or lista[0]['liga']['liga']=='CHALLENGER' %}
 
-						<img src="/static/img/liga/{{lista[0]['liga']['liga']}}.png" height="100" width="100">
+						<img src="/static/img/liga/{{lista[0]['liga']['liga']}}.png" height="100" width="100" alt=''>
 
 					{% else -%}
 
-						<img src="/static/img/liga/{{lista[0]['liga']['liga']}}_{{lista[0]['liga']['posicion']}}.png" height="100" width="100">
+						<img src="/static/img/liga/{{lista[0]['liga']['liga']}}_{{lista[0]['liga']['posicion']}}.png" height="100" width="100" alt=''>
 
 					{% endif %}
 					<br>
@@ -54,7 +54,7 @@
 				<div>
 					<br>
 					<p>UNRANKED</p>
-					<img src="/static/img/liga/PROVISIONAL.png" height="100" width="100">
+					<img src="/static/img/liga/PROVISIONAL.png" height="100" width="100" alt=''>
 				</div>
 
 			{% endif %}
@@ -73,8 +73,8 @@
 		{% for numero,jugador in lista[2]['equipo1'].items() %}
 
 			<div>
-				<p>{{jugador['nombre']}}</p>
-				<img src="{{jugador['icono']}}" height="200" width="100">
+				<p><a href="/jugador/{{jugador['nombre']}}"> {{jugador['nombre']}}</a></p>
+				<img src="{{jugador['icono']}}" height="200" width="100" alt=''>
 				<p>{{jugador['campeon']}}</p> 
 
 				{% if jugador['liga'] %}
@@ -84,11 +84,11 @@
 
 					{% if jugador['liga']['liga']=='MASTER' or jugador['liga']['liga']=='CHALLENGER' %}
 
-						<img src="/static/img/liga/{{jugador['liga']['liga']}}.png" height="100" width="100">
+						<img src="/static/img/liga/{{jugador['liga']['liga']}}.png" height="100" width="100" alt=''>
 
 					{% else -%}
 
-						<img src="/static/img/liga/{{jugador['liga']['liga']}}_{{jugador['liga']['posicion']}}.png" height="100" width="100">
+						<img src="/static/img/liga/{{jugador['liga']['liga']}}_{{jugador['liga']['posicion']}}.png" height="100" width="100" alt=''>
 
 					{% endif %}
 
@@ -96,7 +96,7 @@
 
 					<h3>Liga :</h3> 
 					<p>UNRANKED</p>
-					<img src="/static/img/liga/PROVISIONAL.png" height="100" width="100">
+					<img src="/static/img/liga/PROVISIONAL.png" height="100" width="100" alt=''>
 
 				{% endif %}
 
@@ -113,8 +113,8 @@
 		{% for numero,jugador in lista[2]['equipo2'].items() %}
 
 			<div>
-				<p>{{jugador['nombre']}}</p>
-				<img src="{{jugador['icono']}}" height="200" width="100">
+				<p><a href="/jugador/{{jugador['nombre']}}"> {{jugador['nombre']}}</a></p>
+				<img src="{{jugador['icono']}}" height="200" width="100" alt=''>
 				<p>{{jugador['campeon']}}</p> 
 
 				{% if jugador['liga'] %}
@@ -124,11 +124,11 @@
 					
 					{% if jugador['liga']['liga']=='MASTER' or jugador['liga']['liga']=='CHALLENGER' %}
 
-						<img src="/static/img/liga/{{jugador['liga']['liga']}}.png" height="100" width="100">
+						<img src="/static/img/liga/{{jugador['liga']['liga']}}.png" height="100" width="100" alt=''>
 
 					{% else -%}
 
-						<img src="/static/img/liga/{{jugador['liga']['liga']}}_{{jugador['liga']['posicion']}}.png" height="100" width="100">
+						<img src="/static/img/liga/{{jugador['liga']['liga']}}_{{jugador['liga']['posicion']}}.png" height="100" width="100" alt=''>
 
 					{% endif %}
 
@@ -136,7 +136,7 @@
 
 					<h3>Liga :</h3> 
 					<p>UNRANKED</p>
-					<img src="/static/img/liga/PROVISIONAL.png" height="100" width="100">
+					<img src="/static/img/liga/PROVISIONAL.png" height="100" width="100" alt=''>
 
 				{% endif %}
 

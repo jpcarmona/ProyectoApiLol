@@ -1,4 +1,6 @@
 import requests,json
+from requests_oauthlib import OAuth1
+from urllib.parse import parse_qs
 
 #version='8.11.1'
 ## realización de requests general
@@ -128,8 +130,6 @@ def partida_actual(partida,apikey,region):
 			doc_req['equipo2']['jugador'+str(n2)]=invocador
 			n2+=1
 	return doc_req
-
-
 
 def get_fullinfo(apikey,nombre,region):
 	doc_info =get_info(apikey,nombre,region)

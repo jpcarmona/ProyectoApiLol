@@ -49,6 +49,9 @@
 		{% endif %}
 
 	</div>
+	<div class='twitter'>
+		<a href="/twitter"><button type="button">Twittear</button></a>
+	</div>
 
 {% endblock %}
 
@@ -61,7 +64,7 @@
 		{% for campeon,imagen in lista[0].items() %}
 
 			<div>
-				<img src="{{imagen}}" height="200" width="100">
+				<img src="{{imagen}}" height="200" width="100" alt=''>
 				<p>{{campeon}}</p>
 			</div>
 

@@ -543,3 +543,9 @@ input[type=submit]:hover {
     float: left;
     padding: 20px 0 20px 0;
 }
+
+/* twitter */
+
+.twitter{
+    height: 50px !important;
+}

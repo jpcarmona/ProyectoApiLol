@@ -1,12 +1,22 @@
 {% extends "base.html" %}
 
 {% block menu %}
-<div class="navbar-collapse collapse">
-  <ul class="nav navbar-nav navbar-right">
-    <li><a href="/">INICIO</a></li>
-    <li><a href="/perfil">INVOCADOR</a></li>
-    <li class="active"><a href="/historial">HISTORIAL</a></li>
-    <li><a href="/maestrias">MAESTRIAS</a></li>
-  </ul>
-</div><!--/.nav-collapse -->
+
+	<div class="navbar-collapse collapse">
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/">INICIO</a></li>
+			<li><a href="/perfil">INVOCADOR</a></li>
+			<li class="active"><a href="/historial">HISTORIAL</a></li>
+			<li><a href="/maestrias">MAESTRIAS</a></li>
+		</ul>
+	</div>
+
+{% endblock %}
+
+{% block contenido4 %}
+
+	<div class="info_invocador">
+		<a href="{{authorize_url}}"><button type="button">Ver tu Twitter</button></a>
+	</div>
+
 {% endblock %}
