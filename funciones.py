@@ -1,6 +1,4 @@
 import requests,json
-from requests_oauthlib import OAuth1
-from urllib.parse import parse_qs
 
 #version='8.11.1'
 ## realización de requests general

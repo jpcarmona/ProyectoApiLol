@@ -1,8 +1,6 @@
 from flask import Flask, redirect, render_template, request, session
-from requests_oauthlib import OAuth1
-from urllib.parse import parse_qs
 from funciones import *
-import os,requests
+import os
 
 
 app = Flask(__name__)
