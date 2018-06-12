@@ -66,9 +66,17 @@
 
 	<div class="partida_invocador">
 		<h2>PARTIDA ACTUAL</h2>
-		<h3>Modo de juego: </h3> {{lista[1]['gameMode']}}
-		<h3>Tiempo Jugado: </h3> {{lista[2]['tiempo']}} Minutos<br><br>
-		<br>
+		<div class="cabecera_partida">
+			<h3>Modo de juego: </h3> 
+			<p>{{lista[1]['gameMode']}}</p>
+		</div>
+		<div class="cabecera_partida">
+			<img src="{{lista[2]['mapa']}}" height="100" width="100" alt=''>
+		</div>
+		<div class="cabecera_partida">
+			<h3>Tiempo Jugado: </h3> 
+			<p>{{lista[2]['tiempo']}} Minutos</p>
+		</div>
 		<div>
 
 		{% for numero,jugador in lista[2]['equipo1'].items() %}

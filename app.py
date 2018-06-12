@@ -7,9 +7,7 @@ app.secret_key=str(os.system('openssl rand -base64 24'))
 
 port = os.environ['PORT']
 apikey=get_apikey()
-region='euw1' ## region por defecto
-#save_champions(apikey,region)
-#save_spells(apikey,region)
+#act_docs(apikey)
 
 
 @app.route('/',methods=['POST','GET'])
@@ -27,12 +25,12 @@ def inicio():
 		lista=[gratuitos,0]
 	elif request.method == 'POST':
 		session.pop('perfil',None)
+		session.pop('partidas',None)
 		nombre =request.form.get('nombre')
 		region =request.form.get('region')
 		if 'region' in session and region!=session['region']:
 			session.pop('gratuitos',None)
-			#save_champions(apikey,region)
-			#save_spells(apikey)
+			#act_docs(apikey,region)
 		plantilla,lista=get_fullinfo(apikey,nombre,region)
 		if lista[1]!=1:
 			session['perfil']=lista
@@ -49,9 +47,16 @@ def perfil():
 
 @app.route('/historial')
 def historial():
-	if session:
-		lista=session['historial']
-		return render_template('historial.html',lista=lista)
+	if 'perfil' in session:
+		region=session['region']
+		idcuenta=session['perfil'][0]['accountId']
+		lista=session['perfil']
+		if 'partidas' in session:
+			partidas=session['partidas']
+		else:
+			partidas=get_historial(apikey,idcuenta,region)
+			session['partidas']=partidas
+		return render_template('historial.html',partidas=partidas,lista=lista)
 	else:
 		return redirect('/')
 

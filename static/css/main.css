@@ -15,70 +15,70 @@
 
 body {
   background-color: #f2f2f2;
-    font-family: "Lato";
-    font-weight: bold;
-    font-size: 16px;
-    color: #2279CF;
+	font-family: "Lato";
+	font-weight: bold;
+	font-size: 16px;
+	color: #2279CF;
 
-    -webkit-font-smoothing: antialiased;
-    -webkit-overflow-scrolling: touch;
-    
-    margin-top: 70px;
+	-webkit-font-smoothing: antialiased;
+	-webkit-overflow-scrolling: touch;
+	
+	margin-top: 70px;
 }
 
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Raleway";
-    font-weight: 300;
-    color: white;
+	font-family: "Raleway";
+	font-weight: 300;
+	color: white;
 }
 
 
 /* Paragraph & Typographic */
 p {
-    line-height: 15px;
-    margin-bottom: 15px;
+	line-height: 15px;
+	margin-bottom: 15px;
 }
 
 .centered {
-    text-align: center;
+	text-align: center;
 }
 
 /* Links */
 a {
-    color: #f85c37;
-    word-wrap: break-word;
+	color: #f85c37;
+	word-wrap: break-word;
 
-    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
-    transition: color 0.1s ease-in, background 0.1s ease-in;
+	-webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+	-moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+	-ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+	-o-transition: color 0.1s ease-in, background 0.1s ease-in;
+	transition: color 0.1s ease-in, background 0.1s ease-in;
 }
 
 a:hover,
 a:focus {
-    color: #7b7b7b;
-    text-decoration: none;
-    outline: 0;
+	color: #7b7b7b;
+	text-decoration: none;
+	outline: 0;
 }
 
 a:before,
 a:after {
-    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
-    transition: color 0.1s ease-in, background 0.1s ease-in;
+	-webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+	-moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+	-ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+	-o-transition: color 0.1s ease-in, background 0.1s ease-in;
+	transition: color 0.1s ease-in, background 0.1s ease-in;
 }
 
  hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
 }
 
 
@@ -113,18 +113,18 @@ a:after {
 /*TILT*/
 .tilt {
   -webkit-transition: all 0.5s ease;
-     -moz-transition: all 0.5s ease;
-       -o-transition: all 0.5s ease;
-      -ms-transition: all 0.5s ease;
-          transition: all 0.5s ease;
+	 -moz-transition: all 0.5s ease;
+	   -o-transition: all 0.5s ease;
+	  -ms-transition: all 0.5s ease;
+		  transition: all 0.5s ease;
 }
  
 .tilt:hover {
   -webkit-transform: rotate(-10deg);
-     -moz-transform: rotate(-10deg);
-       -o-transform: rotate(-10deg);
-      -ms-transform: rotate(-10deg);
-          transform: rotate(-10deg);
+	 -moz-transform: rotate(-10deg);
+	   -o-transform: rotate(-10deg);
+	  -ms-transform: rotate(-10deg);
+		  transform: rotate(-10deg);
 }
 
 /* ==========================================================================
@@ -141,15 +141,15 @@ a:after {
 	min-height: 600px;
 	width: 100%;
 	
-    -webkit-background-size: 100%;
-    -moz-background-size: 100%;
-    -o-background-size: 100%;
-    background-size: 100%;
+	-webkit-background-size: 100%;
+	-moz-background-size: 100%;
+	-o-background-size: 100%;
+	background-size: 100%;
 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 #headerwrap h1 {
@@ -230,11 +230,11 @@ a:after {
 
 /* Footer Wrap */
 #f {
-    position: relative;
+	position: relative;
 	background: #2d2d2d;
 	padding-top: 30px;
 	padding-bottom: 30px;
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 #f i {
@@ -303,10 +303,10 @@ a:after {
 
 .modal-body {
 	background: #f2f2f2;
-    font-family: "Lato";
-    font-weight: 300;
-    font-size: 16px;
-    color: #555;
+	font-family: "Lato";
+	font-weight: 300;
+	font-size: 16px;
+	color: #555;
 }
 
 .modal-footer {
@@ -319,95 +319,95 @@ a:after {
    ========================================================================== */
    
 .pricing-option {
-    padding-bottom: 40px;
+	padding-bottom: 40px;
 }
 
 .pricing-option .pricing-top {
-    position: relative;
-    background: #222;
-    color: white;
-    text-align: center;
-    font-weight: bold;
+	position: relative;
+	background: #222;
+	color: white;
+	text-align: center;
+	font-weight: bold;
 
-    padding: 40px 20px 30px 20px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+	padding: 40px 20px 30px 20px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .pricing-option .pricing-top .special-label {
-    display: block;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #1abc9c;
-    text-transform: uppercase;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 3px 0;
+	display: block;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #1abc9c;
+	text-transform: uppercase;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 3px 0;
 }
 
 .special .pricing-top {
-    background: black;
+	background: black;
 }
 
 .pricing-option .pricing-edition {
-    text-transform: uppercase;
-    display: block;
-    font-size: 25px;
-    letter-spacing: 8px;
+	text-transform: uppercase;
+	display: block;
+	font-size: 25px;
+	letter-spacing: 8px;
 }
 
 .pricing-option .price {
-    display: inline-block;
-    position: relative;
+	display: inline-block;
+	position: relative;
 }
 
 .pricing-option .price sup {
-    position: absolute;
-    top: 50px;
-    left: -10px;
-    font-size: 24px;
+	position: absolute;
+	top: 50px;
+	left: -10px;
+	font-size: 24px;
 }
 
 .pricing-option .price .price-amount {
-    font-size: 108px;
-    letter-spacing: -4px;
+	font-size: 108px;
+	letter-spacing: -4px;
 }
 
 .pricing-option .price small {
-    position: relative;
-    left: -10px;
-    font-size: 18px;
+	position: relative;
+	left: -10px;
+	font-size: 18px;
 }
 
 .pricing-option ul {
-    list-style: none;
-    margin: 0;
-    background: #eee;
-    text-align: center;
-    padding-left: 0px;
+	list-style: none;
+	margin: 0;
+	background: #eee;
+	text-align: center;
+	padding-left: 0px;
 }
 
 .pricing-option ul li {
-    border-bottom: solid 1px #e1e1e1;
-    padding-top: 20px;
-    padding-bottom: 20px;
+	border-bottom: solid 1px #e1e1e1;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .pricing-option .pricing-signup {
-    display: block;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 15px 10px;
-    color: white;
-    background: #1abc9c;
+	display: block;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 15px 10px;
+	color: white;
+	background: #1abc9c;
 }
 
 .pricing-option .pricing-signup:hover {
-    background: #ff7878;
+	background: #ff7878;
 }
 
 
@@ -416,136 +416,167 @@ a:after {
    ========================================================================== */
 
 #f {
-    color: #2279CF;
-    font-size: 18px;
-    font-weight: bold;
+	color: #2279CF;
+	font-size: 18px;
+	font-weight: bold;
 }
 
 /* formulario principal */
 
 .invocador {
-    position: relative;
-    font-size: 18px;
-    font-weight: bold;
-    color: #2279CF;
-    margin: 5% 0 5% 0;
-    border: 1px solid #2279CF;
-    padding-bottom: 20px;
-    background: black;
-    opacity: 0.7;
+	position: relative;
+	font-size: 18px;
+	font-weight: bold;
+	color: #2279CF;
+	margin: 5% 0 5% 0;
+	border: 1px solid #2279CF;
+	padding-bottom: 20px;
+	background: black;
+	opacity: 0.7;
 }
 
 .invocador legend{
-    font-size: 18px;
-    font-weight: bold;
-    color: #2279CF;
+	font-size: 18px;
+	font-weight: bold;
+	color: #2279CF;
 }
 
 select,input{
-    background-color: #2279CF;
-    color: black;
-    text-align: center;
-    border-radius: 10px;
-    border-color: #FC5252;
-    margin: 5px;
+	background-color: #2279CF;
+	color: black;
+	text-align: center;
+	border-radius: 10px;
+	border-color: #FC5252;
+	margin: 5px;
 }
 
 input[type=text]{
-    background-image: url('../img/search.png');
-    background-position: 10px 8px;
-    background-repeat: no-repeat;
-    background-size: 15px;
-    padding-left: 30px;
+	background-image: url('../img/search.png');
+	background-position: 10px 8px;
+	background-repeat: no-repeat;
+	background-size: 15px;
+	padding-left: 30px;
 }
 
 input[type=text]:focus,select:focus {
-    background-color: lightblue;
-    border: 3px solid #555;
+	background-color: lightblue;
+	border: 3px solid #555;
 }
 
 input[type=submit] {
-    background-color: #2279CF;
-    color: black;
-    text-align: center;
-    box-shadow: 0px 0px 2px 5px #FC5252;
-    font-weight: bold;
+	background-color: #2279CF;
+	color: black;
+	text-align: center;
+	box-shadow: 0px 0px 2px 5px #FC5252;
+	font-weight: bold;
 }
 
 input[type=submit]:hover {
-    background-color: #FC5252;
+	background-color: #FC5252;
 }
 
 /* INVOCADOR */
 
 .info_invocador{
-    margin: 100px 0 100px 0;
-    border: 1px solid #2279CF;
-    padding-bottom: 20px;
-    background: black;
-    opacity: 0.7;  
-    height: 250px;  
+	margin: 100px 0 100px 0;
+	border: 1px solid #2279CF;
+	padding-bottom: 20px;
+	background: black;
+	opacity: 0.7;  
+	height: 250px;  
 }
 
 .info_invocador div div{
-    width: 33%;
-    float: left;
-    padding: : 20px 0 20px 0;
+	width: 33%;
+	float: left;
+	padding: : 20px 0 20px 0;
 }
 
 .partida_invocador {
-    margin-bottom:25%;
-    border: 1px solid #2279CF;
-    padding-bottom: 20px;
-    background: black;
-    opacity: 0.7;    
+	margin-bottom:25%;
+	border: 1px solid #2279CF;
+	padding-bottom: 20px;
+	background: black;
+	opacity: 0.7;
+}
+
+.partida_invocador .cabecera_partida{
+	width: 33%;
+	float: left;
+	margin: 20px 0 20px 0;
+	height: 100px;
 }
 
 .partida_invocador div{
-    height: 500px; 
+	height: 500px; 
 }
 
 .partida_invocador div div{
-    width: 20%;
-    float: left;
-    padding: 20px 0 20px 0;
+	width: 20%;
+	float: left;
+	margin: 20px 0 20px 0;
 }
 
 .comandos{
-    position: relative;
-    font-family: monospace;
-    font-size: 16px;
-    border: 1px solid #2279CF;
-    height: 150px !important;
-    margin: 20px 10px 20px 10px !important;
+	position: relative;
+	font-family: monospace;
+	font-size: 16px;
+	border: 1px solid #2279CF;
+	height: 150px !important;
+	margin: 20px 10px 20px 10px !important;
 }
 
 .comandos p{
-    position: relative;
-    background: white;
-    margin: 10px 10px 10px 10px !important;
-    color: black !important;
+	position: relative;
+	background: white;
+	margin: 10px 10px 10px 10px !important;
+	color: black !important;
 }
 
 
 /* campeones gratuitos */
 
 .campeones_gratis{
-    margin: 100px 0 100px 0;
-    border: 1px solid #2279CF;
-    padding-bottom: 20px;
-    background: black;
-    opacity: 0.7;  
-    height: 900px;  
+	margin: 100px 0 100px 0;
+	border: 1px solid #2279CF;
+	padding-bottom: 20px;
+	background: black;
+	opacity: 0.7;  
+	height: 900px;  
 }
 
 .campeones_gratis div div{
-    width: 20%;
-    float: left;
-    padding: 20px 0 20px 0;
+	width: 20%;
+	float: left;
+	padding: 20px 0 20px 0;
 }
 
 /* twitter */
 
 .twitter{
-    height: 50px !important;
+	height: 50px !important;
+}
+
+/* historial */
+
+.historial_invocador {
+	margin-bottom:25%;
+	border: 1px solid #2279CF;
+	padding-bottom: 20px;
+	background: black;
+	opacity: 0.7;
+}
+
+.historial_invocador div{
+	height: 200px; 
+}
+
+.historial_invocador div div{
+	width: 12.5%;
+	float: left;
+	padding: : 20px 0 20px 0;
+}
+
+.objetos{
+	width: 50% !important;
 }
