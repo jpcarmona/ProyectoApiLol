@@ -66,7 +66,8 @@
 
 	<div class="partida_invocador">
 		<h2>PARTIDA ACTUAL</h2>
-		<h3>Modo de juego: </h3> {{lista[1]['gameMode']}} <br><br>
+		<h3>Modo de juego: </h3> {{lista[1]['gameMode']}}
+		<h3>Tiempo Jugado: </h3> {{lista[2]['tiempo']}} Minutos<br><br>
 		<br>
 		<div>
 
@@ -75,6 +76,8 @@
 			<div>
 				<p><a href="/jugador/{{jugador['nombre']}}"> {{jugador['nombre']}}</a></p>
 				<img src="{{jugador['icono']}}" height="200" width="100" alt=''>
+				<img src="{{jugador['spell1']}}" height="50" width="50" alt=''>
+				<img src="{{jugador['spell2']}}" height="50" width="50" alt=''>
 				<p>{{jugador['campeon']}}</p> 
 
 				{% if jugador['liga'] %}
@@ -106,7 +109,7 @@
 
 		</div>
 		<br>
-		<h2>VS.</h2>
+		<h2>VS</h2>
 		<br>
 		<div>
 
@@ -115,6 +118,9 @@
 			<div>
 				<p><a href="/jugador/{{jugador['nombre']}}"> {{jugador['nombre']}}</a></p>
 				<img src="{{jugador['icono']}}" height="200" width="100" alt=''>
+				<img src="{{jugador['spell1']}}" height="50" width="50" alt=''>
+				<img src="{{jugador['spell2']}}" height="50" width="50" alt=''>
+				<br>
 				<p>{{jugador['campeon']}}</p> 
 
 				{% if jugador['liga'] %}
