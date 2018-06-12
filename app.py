@@ -7,7 +7,7 @@ app.secret_key=str(os.system('openssl rand -base64 24'))
 
 port = os.environ['PORT']
 apikey=get_apikey()
-#act_docs(apikey)
+#act_docs(apikey) ## actualizar ficheros (consume mucho a la api)
 
 
 @app.route('/',methods=['POST','GET'])
