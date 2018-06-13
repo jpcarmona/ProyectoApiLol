@@ -83,6 +83,16 @@ def get_champion(id):
 	campeon=campeones[str(id)]
 	return campeon
 
+## obtener ID campeon sin llamar a la api
+def get_idchampion(campeon):
+	idcampeon=''
+	with open('docs/campeones.json', 'r') as fichero:
+		campeones = json.load(fichero)
+	for key,value in campeones.items():
+		if value['imagen'].lower()==campeon.lower():
+			idcampeon=key
+	return idcampeon
+
 ## campeones gratuitos
 def get_freechampions(apikey,region):
 	url='https://'+region+'.api.riotgames.com/lol/platform/v3/champions?freeToPlay=true'
@@ -115,7 +125,10 @@ def get_spell(id):
 	version=get_version()
 	with open('docs/spells.json', 'r') as fichero:
 		spells = json.load(fichero)
-	spell='http://ddragon.leagueoflegends.com/cdn/'+version+'/img/spell/'+spells[str(id)]['imagen']
+	try:
+		spell='http://ddragon.leagueoflegends.com/cdn/'+version+'/img/spell/'+spells[str(id)]['imagen']
+	except:
+		spell=''	
 	return spell
 
 ## obtener todos los objetos
@@ -125,7 +138,7 @@ def get_objetos(apikey,region):
 	doc_req=get_requests(apikey,url)
 	return doc_req['data']
 
-## guardar spells en fichero
+## guardar objetos en fichero
 def save_objetos(apikey,region):
 	doc_objetos=get_objetos(apikey,region)
 	doc_req={}
@@ -137,12 +150,15 @@ def save_objetos(apikey,region):
 			doc_req[key]['imagen']=value['image']['full']
 		json.dump(doc_req, fichero)
 
-## obtener spell sin llamar a la api
+## obtener objeto sin llamar a la api
 def get_objeto(id):
 	version=get_version()
 	with open('docs/objetos.json', 'r') as fichero:
 		objetos = json.load(fichero)
-	objeto='http://ddragon.leagueoflegends.com/cdn/'+version+'/img/item/'+objetos[str(id)]['imagen']
+	try:
+		objeto='http://ddragon.leagueoflegends.com/cdn/'+version+'/img/item/'+objetos[str(id)]['imagen']
+	except:
+		objeto=''
 	return objeto
 
 ## actualizar ficheros docs
@@ -260,16 +276,15 @@ def get_partidasimple(partida,idcuenta):
 				doc_req['jugador']['gana']=False
 	return doc_req
 
-
-## obtiene datos detallados de partida
-#def get_partidafull(partida):
-
-
 ## obtiene el historial
-def get_historial(apikey,idcuenta,region,pagina):
+def get_historial(apikey,idcuenta,region,pagina,tipo=''):
 	end=pagina*10
 	begin=end-10
-	url='https://'+region+'.api.riotgames.com/lol/match/v3/matchlists/by-account/'+str(idcuenta)+'?beginIndex='+str(begin)+'&endIndex='+str(end)
+	idcampeon=get_idchampion(tipo)
+	if tipo not in ['todo','ganadas','perdidas']:
+		url='https://'+region+'.api.riotgames.com/lol/match/v3/matchlists/by-account/'+str(idcuenta)+'?beginIndex='+str(begin)+'&champion='+str(idcampeon)+'&endIndex='+str(end)		
+	else:
+		url='https://'+region+'.api.riotgames.com/lol/match/v3/matchlists/by-account/'+str(idcuenta)+'?beginIndex='+str(begin)+'&endIndex='+str(end)
 	doc=get_requests(apikey,url)
 	doc_req=[]
 	total=doc['totalGames']
@@ -282,7 +297,7 @@ def get_historial(apikey,idcuenta,region,pagina):
 		partida=get_partida(apikey,idpartida,region)
 		partidasimple=get_partidasimple(partida,idcuenta)
 		doc_req.append({'idpartida':idpartida,'campeon':campeon,'fecha':fecha,'partidasimple':partidasimple})
-	return doc_req,total
+	return doc_req,total,idcampeon
 
 ## maestria con campeon
 def get_mastery_champion(apikey,idinvocador,region):

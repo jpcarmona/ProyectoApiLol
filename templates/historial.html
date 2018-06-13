@@ -39,66 +39,15 @@
 				</fieldset>
 			</div>
 		</form>
-	</div>
+		{% if not idcampeon and tipo not in ['todo','ganadas','perdidas'] and pagina %}
 
-{% endblock %}
-
-{% block contenido5 %}
-
-{% if partidas %}
-
-	<div class="historial_invocador">
-
-		<h2>HISTORIAL DE {{lista['name']}}</h2>
-
-	{% for partida in partidas %}
-
-		{% if partida['partidasimple']['jugador']['gana'] %}
-
-			<div class='partida_victoria'>
-				<h3>VICTORIA</h3>
-
-		{% else -%}
-
-			<div class='partida_derrota'>
-				<h3>DERROTA</h3>
-
-		{% endif %}
-
-				<div>
-					<p>{{partida['partidasimple']['modo']}}</p>
-					<img src="{{partida['partidasimple']['mapa']}}" height="100" width="100" alt=''>
-				</div>
-				<div>
-					<img src="{{partida['campeon']['icono']}}" height="100" width="100" alt=''>
-					<img src="{{partida['partidasimple']['jugador']['spell1']}}" height="50" width="50" alt=''>
-					<img src="{{partida['partidasimple']['jugador']['spell2']}}" height="50" width="50" alt=''>
-				</div>
-				<div class='objetos'>
-				<p>Kills/Deaths/Assists - {{partida['partidasimple']['jugador']['kills']}}/{{partida['partidasimple']['jugador']['deaths']}}/{{partida['partidasimple']['jugador']['assists']}}</p>
-					<img src="{{partida['partidasimple']['jugador']['item0']}}" height="50" width="50" alt=''>
-					<img src="{{partida['partidasimple']['jugador']['item1']}}" height="50" width="50" alt=''>
-					<img src="{{partida['partidasimple']['jugador']['item2']}}" height="50" width="50" alt=''>
-					<img src="{{partida['partidasimple']['jugador']['item3']}}" height="50" width="50" alt=''>
-					<img src="{{partida['partidasimple']['jugador']['item4']}}" height="50" width="50" alt=''>
-					<img src="{{partida['partidasimple']['jugador']['item5']}}" height="50" width="50" alt=''>
-					<img src="{{partida['partidasimple']['jugador']['item6']}}" height="50" width="50" alt=''>				
-					<p>{{partida['fecha']}}</p>
-					<p>{{partida['partidasimple']['tiempo']}} Minutos</p>
-				</div>
+			<h2>CAMPEÓN NO ENCONTRADO</h2>
 			</div>
+		{% else -%}
+			</div>
+			{% include 'partidas.html' %}
 
-	{% endfor %}
-		<div class='botones'>
-		{% if pagina!=1 %}
-			<a href="/historial/{{pagina-1}}"><button type="button">Anterior</button></a>
-		{% endif %}
-		{% if total+10>(pagina*10) %}
-			<a href="/historial/{{pagina+1}}"><button type="button">Siguiente</button></a>
-		{% endif %}
-		</div>
-	</div>
-
-{% endif %}
+		{% endif %}	
 
 {% endblock %}
+

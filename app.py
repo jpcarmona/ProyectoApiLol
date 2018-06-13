@@ -64,27 +64,27 @@ def historial():
 		if request.method == 'POST':
 			valor=request.form.get('valor')
 			if valor=='Mostrar todo el historial':
-				return redirect('/historial/1')
+				return redirect('/historial/todo/1')
 			elif valor=='Buscar':
 				campeon=request.form.get('campeon')
-				return redirect('/historial/campeon/'+campeon)
+				return redirect('/historial/'+campeon+'/1')
 			elif valor=='Victorias':
-				return redirect('/historial/partidas/ganadas')
+				return redirect('/historial/ganadas/1')
 			elif valor=='Buscar':
-				return redirect('/historial/partidas/perdidas')
+				return redirect('/historial/perdidas/1')
 		else:
-			return render_template('historial.html',partidas=[])
+			return render_template('historial.html',partidas=[],pagina='')
 	else:
 		return redirect('/')
 
-@app.route('/historial/<pagina>')
-def paginas(pagina):
+@app.route('/historial/<tipo>/<pagina>')
+def paginas_tipo(pagina,tipo):
 	pagina=int(pagina)
 	region = session['region']
 	idcuenta=session['perfil']['accountId']
 	lista=session['perfil']
-	partidas,total=get_historial(apikey,idcuenta,region,pagina)
-	return render_template('historial.html',partidas=partidas,lista=lista,pagina=pagina,total=total)
+	partidas,total,idcampeon=get_historial(apikey,idcuenta,region,pagina,tipo)
+	return render_template('historial.html',partidas=partidas,lista=lista,pagina=pagina,total=total,tipo=tipo,idcampeon=idcampeon)
 
 @app.route('/maestrias')
 def maestrias():
