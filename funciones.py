@@ -266,10 +266,13 @@ def get_partidasimple(partida,idcuenta):
 
 
 ## obtiene el historial
-def get_historial(apikey,idcuenta,region):
-	url='https://'+region+'.api.riotgames.com/lol/match/v3/matchlists/by-account/'+str(idcuenta)+'?endIndex=10'
+def get_historial(apikey,idcuenta,region,pagina):
+	end=pagina*10
+	begin=end-10
+	url='https://'+region+'.api.riotgames.com/lol/match/v3/matchlists/by-account/'+str(idcuenta)+'?beginIndex='+str(begin)+'&endIndex='+str(end)
 	doc=get_requests(apikey,url)
 	doc_req=[]
+	total=doc['totalGames']
 	for partida in doc['matches']:
 		idpartida=partida['gameId']
 		version=get_version()
@@ -279,7 +282,7 @@ def get_historial(apikey,idcuenta,region):
 		partida=get_partida(apikey,idpartida,region)
 		partidasimple=get_partidasimple(partida,idcuenta)
 		doc_req.append({'idpartida':idpartida,'campeon':campeon,'fecha':fecha,'partidasimple':partidasimple})
-	return doc_req
+	return doc_req,total
 
 ## maestria con campeon
 def get_mastery_champion(apikey,idinvocador,region):

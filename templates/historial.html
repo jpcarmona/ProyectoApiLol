@@ -24,10 +24,17 @@
 					<br/><br/>
 				</fieldset>
 				<fieldset>
-				<legend>Buscar por Campeón</legend>
+					<legend>Buscar por Campeón</legend>
 					<label>Campeón:</label>
-					<input type="text" name="campeon"/>					
+					<input type="text" name="campeon"/>
 					<input type="submit" name='valor' value="Buscar">
+					<br/>
+				</fieldset>
+				<br/>
+				<fieldset>
+					<legend>Buscar por Victoria o Derrota</legend>
+					<input type="submit" name='valor' value="Victorias">
+					<input type="submit" name='valor' value="Derrotas">
 					<br/>
 				</fieldset>
 			</div>
@@ -83,8 +90,12 @@
 
 	{% endfor %}
 		<div class='botones'>
-			<a href="/historial/-10"><button type="button">Anterior</button></a>
-			<a href="/historial/10"><button type="button">Siguiente</button></a>
+		{% if pagina!=1 %}
+			<a href="/historial/{{pagina-1}}"><button type="button">Anterior</button></a>
+		{% endif %}
+		{% if total+10>(pagina*10) %}
+			<a href="/historial/{{pagina+1}}"><button type="button">Siguiente</button></a>
+		{% endif %}
 		</div>
 	</div>
 

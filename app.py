@@ -51,35 +51,6 @@ def perfil():
 	else:
 		return redirect('/')
 
-@app.route('/historial',methods=['POST','GET'])
-def historial():
-	if 'perfil' in session:
-		if request.method == 'POST':
-			region=session['region']
-			idcuenta=session['perfil']['accountId']
-			lista=session['perfil']
-			valor=request.form.get('valor')
-			if valor=='Mostrar todo el historial':
-				if 'partidas' in session:
-					partidas=session['partidas']
-				else:
-					partidas=get_historial(apikey,idcuenta,region)
-					session['partidas']=partidas				
-			elif valor=='Buscar':
-				campeon=request.form.get('campeon')
-				partidas=get_historial(apikey,idcuenta,region)
-			return render_template('historial.html',partidas=partidas,lista=lista)
-		else:
-			return render_template('historial.html',partidas=[])
-	else:
-		return redirect('/')
-
-@app.route('/maestrias')
-def maestrias():
-	if request.method == 'GET':
-		return render_template('maestrias.html')
-
-
 @app.route('/jugador/<nombre>')
 def jugadores(nombre):
 	region = session['region']
@@ -87,7 +58,38 @@ def jugadores(nombre):
 	session['perfil']=lista
 	return render_template(plantilla,lista=lista)
 
+@app.route('/historial',methods=['POST','GET'])
+def historial():
+	if 'perfil' in session:
+		if request.method == 'POST':
+			valor=request.form.get('valor')
+			if valor=='Mostrar todo el historial':
+				return redirect('/historial/1')
+			elif valor=='Buscar':
+				campeon=request.form.get('campeon')
+				return redirect('/historial/campeon/'+campeon)
+			elif valor=='Victorias':
+				return redirect('/historial/partidas/ganadas')
+			elif valor=='Buscar':
+				return redirect('/historial/partidas/perdidas')
+		else:
+			return render_template('historial.html',partidas=[])
+	else:
+		return redirect('/')
 
+@app.route('/historial/<pagina>')
+def paginas(pagina):
+	pagina=int(pagina)
+	region = session['region']
+	idcuenta=session['perfil']['accountId']
+	lista=session['perfil']
+	partidas,total=get_historial(apikey,idcuenta,region,pagina)
+	return render_template('historial.html',partidas=partidas,lista=lista,pagina=pagina,total=total)
+
+@app.route('/maestrias')
+def maestrias():
+	if request.method == 'GET':
+		return render_template('maestrias.html')
 
 
 app.run('0.0.0.0',int(port), debug=True)
