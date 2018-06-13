@@ -14,15 +14,13 @@
 /* OVERALL ASPECT */
 
 body {
-  background-color: #f2f2f2;
+	background: url(../img/fondo0.jpg) no-repeat center;
+	background-attachment: fixed;
+  	background-color: #f2f2f2;
 	font-family: "Lato";
 	font-weight: bold;
 	font-size: 16px;
 	color: #2279CF;
-
-	-webkit-font-smoothing: antialiased;
-	-webkit-overflow-scrolling: touch;
-	
 	margin-top: 70px;
 }
 
@@ -48,11 +46,6 @@ p {
 a {
 	color: #f85c37;
 	word-wrap: break-word;
-
-	-webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
-	-moz-transition: color 0.1s ease-in, background 0.1s ease-in;
-	-ms-transition: color 0.1s ease-in, background 0.1s ease-in;
-	-o-transition: color 0.1s ease-in, background 0.1s ease-in;
 	transition: color 0.1s ease-in, background 0.1s ease-in;
 }
 
@@ -65,10 +58,6 @@ a:focus {
 
 a:before,
 a:after {
-	-webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
-	-moz-transition: color 0.1s ease-in, background 0.1s ease-in;
-	-ms-transition: color 0.1s ease-in, background 0.1s ease-in;
-	-o-transition: color 0.1s ease-in, background 0.1s ease-in;
 	transition: color 0.1s ease-in, background 0.1s ease-in;
 }
 
@@ -90,7 +79,7 @@ a:after {
 
 .navbar-inverse {
 	background: #2d2d2d;
-	border-color: #2d2d2d;
+	border-color: Grey;
 }
 
 .navbar-inverse .navbar-nav > .active > a {
@@ -112,18 +101,10 @@ a:after {
 
 /*TILT*/
 .tilt {
-  -webkit-transition: all 0.5s ease;
-	 -moz-transition: all 0.5s ease;
-	   -o-transition: all 0.5s ease;
-	  -ms-transition: all 0.5s ease;
 		  transition: all 0.5s ease;
 }
  
 .tilt:hover {
-  -webkit-transform: rotate(-10deg);
-	 -moz-transform: rotate(-10deg);
-	   -o-transform: rotate(-10deg);
-	  -ms-transform: rotate(-10deg);
 		  transform: rotate(-10deg);
 }
 
@@ -132,23 +113,13 @@ a:after {
    ========================================================================== */
 
 #headerwrap {
-	background: url(../img/fondo0.jpg) no-repeat center;
 	margin-top: 15px;
 	padding-top:40px;
 	text-align:center;
-	background-attachment: fixed;
 	background-position: center center;
 	min-height: 600px;
 	width: 100%;
-	
-	-webkit-background-size: 100%;
-	-moz-background-size: 100%;
-	-o-background-size: 100%;
 	background-size: 100%;
-
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
 	background-size: cover;
 }
 
@@ -330,8 +301,6 @@ a:after {
 	font-weight: bold;
 
 	padding: 40px 20px 30px 20px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
@@ -478,12 +447,13 @@ input[type=submit]:hover {
 /* INVOCADOR */
 
 .info_invocador{
-	margin: 100px 0 100px 0;
+	margin: 100px 0 100px 10%;
 	border: 1px solid #2279CF;
 	padding-bottom: 20px;
 	background: black;
 	opacity: 0.7;  
-	height: 250px;  
+	height: 250px;
+	width: 750px;
 }
 
 .info_invocador div div{
@@ -493,11 +463,12 @@ input[type=submit]:hover {
 }
 
 .partida_invocador {
-	margin-bottom:25%;
+	margin: 0 0 10% 10%;
 	border: 1px solid #2279CF;
 	padding-bottom: 20px;
 	background: black;
 	opacity: 0.7;
+	width: 750px;
 }
 
 .partida_invocador .cabecera_partida{

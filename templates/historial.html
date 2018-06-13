@@ -15,9 +15,34 @@
 
 {% block contenido4 %}
 
+	<div class="invocador">
+		<form action="/historial" method="post">
+			<div class="form-invocador">
+				<fieldset>
+					<br/><br/>
+					<input type="submit" name='valor' value="Mostrar todo el historial">
+					<br/><br/>
+				</fieldset>
+				<fieldset>
+				<legend>Buscar por Campeón</legend>
+					<label>Campeón:</label>
+					<input type="text" name="campeon"/>					
+					<input type="submit" name='valor' value="Buscar">
+					<br/>
+				</fieldset>
+			</div>
+		</form>
+	</div>
+
+{% endblock %}
+
+{% block contenido5 %}
+
+{% if partidas %}
+
 	<div class="historial_invocador">
 
-		<h2>HISTORIAL DE {{lista[0]['name']}}</h2>
+		<h2>HISTORIAL DE {{lista['name']}}</h2>
 
 	{% for partida in partidas %}
 
@@ -63,5 +88,6 @@
 		</div>
 	</div>
 
+{% endif %}
 
 {% endblock %}

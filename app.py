@@ -22,41 +22,55 @@ def inicio():
 			gratuitos=session['gratuitos']
 		else:
 			gratuitos=get_freechampions(apikey,region)
-		lista=[gratuitos,0]
+			session['gratuitos']=gratuitos
+		lista=[gratuitos]
 	elif request.method == 'POST':
 		session.pop('perfil',None)
+		session.pop('lista',None)
 		session.pop('partidas',None)
 		nombre =request.form.get('nombre')
 		region =request.form.get('region')
 		if 'region' in session and region!=session['region']:
 			session.pop('gratuitos',None)
 			#act_docs(apikey,region)
-		plantilla,lista=get_fullinfo(apikey,nombre,region)
-		if lista[1]!=1:
-			session['perfil']=lista
-			session['region']=region
+		plantilla,lista=get_fullinfo(apikey,nombre,region)		
+		session['region']=region
+		if lista[0]!=1:
+			session['lista']=lista
+			session['perfil']=lista[0]
+		else:
+			gratuitos=get_freechampions(apikey,region)
+			lista=[gratuitos,1]
 	return render_template(plantilla,lista=lista)
 
 @app.route('/perfil')
 def perfil():
-	if 'perfil' in session:
-		lista=session['perfil']
+	if 'lista' in session:
+		lista=session['lista']
 		return render_template('perfil.html',lista=lista)
 	else:
 		return redirect('/')
 
-@app.route('/historial')
+@app.route('/historial',methods=['POST','GET'])
 def historial():
 	if 'perfil' in session:
-		region=session['region']
-		idcuenta=session['perfil'][0]['accountId']
-		lista=session['perfil']
-		if 'partidas' in session:
-			partidas=session['partidas']
+		if request.method == 'POST':
+			region=session['region']
+			idcuenta=session['perfil']['accountId']
+			lista=session['perfil']
+			valor=request.form.get('valor')
+			if valor=='Mostrar todo el historial':
+				if 'partidas' in session:
+					partidas=session['partidas']
+				else:
+					partidas=get_historial(apikey,idcuenta,region)
+					session['partidas']=partidas				
+			elif valor=='Buscar':
+				campeon=request.form.get('campeon')
+				partidas=get_historial(apikey,idcuenta,region)
+			return render_template('historial.html',partidas=partidas,lista=lista)
 		else:
-			partidas=get_historial(apikey,idcuenta,region)
-			session['partidas']=partidas
-		return render_template('historial.html',partidas=partidas,lista=lista)
+			return render_template('historial.html',partidas=[])
 	else:
 		return redirect('/')
 

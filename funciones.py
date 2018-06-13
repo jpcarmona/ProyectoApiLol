@@ -215,9 +215,7 @@ def get_fullinfo(apikey,nombre,region):
 		lista=[doc_info,doc_actual,partida]
 	else:
 		plantilla =('index.html')
-		region='euw1'
-		gratuitos=get_freechampions(apikey,region)
-		lista=[gratuitos,1]
+		lista=[1]
 	return plantilla,lista
 
 ## obtiene la partida
