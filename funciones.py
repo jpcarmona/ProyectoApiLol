@@ -29,13 +29,13 @@ def get_version():
 
 ## obtener fecha
 def get_fecha(milisegundos):
-	segundos=(milisegundos/1000) -180 ## retraso de partida
+	segundos=(milisegundos/1000) +120 ## retraso de partida
 	fecha=datetime.datetime.fromtimestamp(segundos).strftime('%Y-%m-%d %H:%M:%S')
 	return fecha
 
 ## obtener tiempo partida
 def get_tiempo(milisegundos):
-	segundos=(milisegundos/1000)
+	segundos=(milisegundos/1000) +120 ## retraso de partida
 	tiempo=datetime.datetime.now()-datetime.datetime.fromtimestamp(segundos)
 	minutos=int(tiempo.seconds/60)
 	return str(minutos)
