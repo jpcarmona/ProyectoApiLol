@@ -35,10 +35,10 @@ def get_fecha(milisegundos):
 
 ## obtener tiempo partida
 def get_tiempo(milisegundos):
-	segundos=(milisegundos/1000) -180 ## retraso de partida
+	segundos=(milisegundos/1000) -300 ## retraso de partida
 	tiempo=datetime.datetime.now()-datetime.datetime.fromtimestamp(segundos)
-	minutos=int(tiempo.seconds)/60
-	return minutos
+	minutos=int(tiempo.seconds/60)
+	return str(minutos)
 
 ## informacion jugador
 def get_info(apikey,nombre,region): 
