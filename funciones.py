@@ -22,10 +22,10 @@ def get_version():
 	return datos['version']
 
 ## obtener apikey
-def get_apikey():
-	with open('docs/apikey.json', 'r') as fichero:
-		datos = json.load(fichero)
-	return datos['apikey']
+#def get_apikey():
+#	with open('docs/apikey.json', 'r') as fichero:
+#		datos = json.load(fichero)
+#	return datos['apikey']
 
 ## obtener fecha
 def get_fecha(milisegundos):
@@ -300,7 +300,7 @@ def get_historial(apikey,idcuenta,region,pagina,tipo=''):
 	return doc_req,total,idcampeon
 
 ## maestria con campeon
-def get_mastery_champion(apikey,idinvocador,region):
-	url='https://'+region+'.api.riotgames.com/lol/eague/v3/positions/by-summoner/'+str(idinvocador)
-	doc_req=get_requests(apikey,url)
-	return doc_req
+#def get_mastery_champion(apikey,idinvocador,region):
+#	url='https://'+region+'.api.riotgames.com/lol/eague/v3/positions/by-summoner/'+str(idinvocador)
+#	doc_req=get_requests(apikey,url)
+#	return doc_req

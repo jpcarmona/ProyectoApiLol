@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.secret_key=str(os.system('openssl rand -base64 24'))
 
 port = os.environ['PORT']
-apikey=get_apikey()
+apikey=os.environ['APIKEY']
 #act_docs(apikey) ## actualizar ficheros (consume mucho a la api)
 
 
@@ -100,9 +100,10 @@ def maestrias():
 REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token"
 AUTHENTICATE_URL = "https://api.twitter.com/oauth/authenticate?oauth_token="
 ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token"
-CONSUMER_KEY = 'HlAti771ujp4EQImR5D78RZY1'
-CONSUMER_SECRET = '4Nwzprz3C3UlOHTjoms1UJW4SA2ghiGxOvpe4JMaK2XBYDBftV'
-update_url = 'https://api.twitter.com/1.1/statuses/update.json'
+UPDATE_URL = 'https://api.twitter.com/1.1/statuses/update.json'
+CONSUMER_KEY = os.environ['CONSUMER_KEY']
+CONSUMER_SECRET = os.environ['CONSUMER_SECRET']
+
 
 def get_request_token_oauth1():
 	oauth = OAuth1(CONSUMER_KEY,
@@ -135,11 +136,7 @@ def callback():
 	access_token,access_token_secret= get_access_token_oauth1(request_token,verifier)
 	session["access_token"]= access_token.decode("utf-8")
 	session["access_token_secret"]= access_token_secret.decode("utf-8")
-	return """<html><head></head><body>
-	<form method="POST" action="/twittear">
-	<input name="status_update" type="text" value="hello"/>
-	<input type="submit" value="Send"/>
-	</form></body></html>"""
+	return redirect('/twittear')
 
 @app.route('/twittear', methods=["POST"])
 def twittear():
@@ -151,10 +148,11 @@ def twittear():
 				client_secret=CONSUMER_SECRET,
 				resource_owner_key=access_token,
 				resource_owner_secret=access_token_secret)
-	url = update_url
-	r=requests.post(url, data=post, auth=oauth)
+	r=requests.post(UPDATE_URL, data=post, auth=oauth)
 	if r.status_code==200:
 		return redirect("https://twitter.com/#!/%s" % session["screen_name"])
+	else:
+		return redirect('/twitter')
 
 app.run('0.0.0.0',int(port), debug=True)
 
