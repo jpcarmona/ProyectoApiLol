@@ -7,6 +7,7 @@
 			<li><a href="/">INICIO</a></li>
 			<li class="active"><a href="/perfil">INVOCADOR</a></li>
 			<li><a href="/historial">HISTORIAL</a></li>
+			<li class="active2"><a href="/perfil">{{lista[0]['name']}}</a></li>
 		</ul>
 	</div>
 
@@ -62,6 +63,10 @@
 	</div>
 
 	{% if lista[1] %}
+
+	<div class='twitter'>
+		<a href="{{ url_for('twitter')}}"><button type="button">Twittear</button></a>
+	</div>
 
 	<div class="partida_invocador">
 		<h2>PARTIDA ACTUAL</h2>

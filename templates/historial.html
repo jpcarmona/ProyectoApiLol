@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block menu %}
-
-	<div class="navbar-collapse collapse">
+	<div class="navbar-collapse collapse">		
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="/">INICIO</a></li>
 			<li><a href="/perfil">INVOCADOR</a></li>
 			<li class="active"><a href="/historial">HISTORIAL</a></li>
+			<li class="active2"><a href="/perfil">{{lista['name']}}</a></li>
 		</ul>
 	</div>
 
@@ -18,8 +18,8 @@
 		<form action="/historial" method="post">
 			<div class="form-invocador">
 				<fieldset>
-					<legend>Buscar por Campeón</legend>
-					<input type="submit" name='valor' value="Mostrar todo el historial">
+					<legend>Mostrar todo el historial</legend>
+					<input type="submit" name='valor' value="Mostrar">
 					<br/><br/>
 				</fieldset>
 			</div>
@@ -37,7 +37,7 @@
 				</fieldset>
 			</div>
 		</form>
-		{% if not idcampeon and tipo not in ['todo','ganadas','perdidas'] and pagina %}
+		{% if not idcampeon and tipo!='todo' and pagina %}
 
 			<h2>CAMPEÓN NO ENCONTRADO</h2>
 			</div>

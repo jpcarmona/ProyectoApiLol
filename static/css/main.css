@@ -581,3 +581,8 @@ input[type=submit]:hover {
 .objetos{
 	width: 400px !important;
 }
+
+.navbar-inverse .navbar-nav > .active2 > a {
+	background: Grey;
+	color: #691818 !important;
+}

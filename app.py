@@ -66,17 +66,14 @@ def historial():
 	if 'perfil' in session:
 		if request.method == 'POST':
 			valor=request.form.get('valor')
-			if valor=='Mostrar todo el historial':
+			if valor=='Mostrar':
 				return redirect('/historial/todo/1')
 			elif valor=='Buscar':
 				campeon=request.form.get('campeon')
 				return redirect('/historial/'+campeon+'/1')
-			elif valor=='Victorias':
-				return redirect('/historial/ganadas/1')
-			elif valor=='Buscar':
-				return redirect('/historial/perdidas/1')
 		else:
-			return render_template('historial.html',partidas=[],pagina='')
+			lista=session['perfil']
+			return render_template('historial.html',lista=lista,partidas=[],pagina='')
 	else:
 		return redirect('/')
 
@@ -129,7 +126,7 @@ def twitter():
 	session["request_token"]=request_token.decode("utf-8")
 	return redirect(authorize_url)
 
-@app.route('/callback', methods=["GET", "POST"])
+@app.route('/callback')
 def callback():
 	request_token=session["request_token"]
 	verifier  = request.args.get("oauth_verifier")
@@ -138,9 +135,17 @@ def callback():
 	session["access_token_secret"]= access_token_secret.decode("utf-8")
 	return redirect('/twittear')
 
-@app.route('/twittear', methods=["POST"])
+@app.route('/twittear')
 def twittear():
-	update = request.form["status_update"]
+	lista=session['lista']
+	invocador=lista[0]['summonerName']
+	modo=lista[1]['gameMode']
+	for jugador in lista[1]['participants']:
+		if jugador["summonerName"]==invocador:
+			campeon=get_champion(jugador['championId'])['nombre']
+	update = '''@{} está jugando un {} con {}.
+				Mira si alguien está jugando en:
+				https://lol-player-unknown.herokuapp.com'''.format(invocador,modo,campeon)
 	post = {"status": update}
 	access_token=session["access_token"]
 	access_token_secret=session["access_token_secret"]

@@ -281,7 +281,7 @@ def get_historial(apikey,idcuenta,region,pagina,tipo=''):
 	end=pagina*10
 	begin=end-10
 	idcampeon=get_idchampion(tipo)
-	if tipo not in ['todo','ganadas','perdidas']:
+	if tipo !='todo':
 		url='https://'+region+'.api.riotgames.com/lol/match/v3/matchlists/by-account/'+str(idcuenta)+'?beginIndex='+str(begin)+'&champion='+str(idcampeon)+'&endIndex='+str(end)		
 	else:
 		url='https://'+region+'.api.riotgames.com/lol/match/v3/matchlists/by-account/'+str(idcuenta)+'?beginIndex='+str(begin)+'&endIndex='+str(end)
