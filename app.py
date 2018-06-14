@@ -143,7 +143,7 @@ def twittear():
 	for jugador in lista[1]['participants']:
 		if jugador["summonerName"]==invocador:
 			campeon=get_champion(jugador['championId'])['nombre']
-	update = '''@{} está jugando un {} con {}.
+	update = '''{} está jugando un {} con {}.
 				Mira si alguien está jugando en:
 				https://lol-player-unknown.herokuapp.com'''.format(invocador,modo,campeon)
 	post = {"status": update}

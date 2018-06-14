@@ -46,10 +46,10 @@
 	{% endfor %}
 		<div class='botones'>
 		{% if pagina!=1 %}
-			<a href="/historial/{{tipo}}/{{pagina-1}}"><button type="button">Anterior</button></a>
+			<a href="/historial/{{tipo}}/{{pagina-1}}">Anterior</a>
 		{% endif %}
 		{% if total>(pagina*10) %}
-			<a href="/historial/{{tipo}}/{{pagina+1}}"><button type="button">Siguiente</button></a>
+			<a href="/historial/{{tipo}}/{{pagina+1}}">Siguiente</a>
 		{% endif %}
 		</div>
 	</div>
