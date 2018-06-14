@@ -1,5 +1,7 @@
 from flask import Flask, redirect, render_template, request, session
 from funciones import *
+from requests_oauthlib import OAuth1
+from urllib.parse import parse_qs
 import os
 
 app = Flask(__name__)
@@ -55,7 +57,8 @@ def perfil():
 def jugadores(nombre):
 	region = session['region']
 	plantilla,lista=get_fullinfo(apikey,nombre,region)
-	session['perfil']=lista
+	session['lista']=lista
+	session['perfil']=lista[0]
 	return render_template(plantilla,lista=lista)
 
 @app.route('/historial',methods=['POST','GET'])
@@ -91,6 +94,67 @@ def maestrias():
 	if request.method == 'GET':
 		return render_template('maestrias.html')
 
+## twitter
+
+
+REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token"
+AUTHENTICATE_URL = "https://api.twitter.com/oauth/authenticate?oauth_token="
+ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token"
+CONSUMER_KEY = 'HlAti771ujp4EQImR5D78RZY1'
+CONSUMER_SECRET = '4Nwzprz3C3UlOHTjoms1UJW4SA2ghiGxOvpe4JMaK2XBYDBftV'
+update_url = 'https://api.twitter.com/1.1/statuses/update.json'
+
+def get_request_token_oauth1():
+	oauth = OAuth1(CONSUMER_KEY,
+				client_secret=CONSUMER_SECRET)
+	r = requests.post(url=REQUEST_TOKEN_URL, auth=oauth)
+	credentials = parse_qs(r.content)
+	return credentials.get(b'oauth_token')[0]
+
+def get_access_token_oauth1(request_token,verifier):
+	oauth = OAuth1(CONSUMER_KEY,
+					client_secret=CONSUMER_SECRET,
+					resource_owner_key=request_token,
+					verifier=verifier,)
+	r = requests.post(url=ACCESS_TOKEN_URL, auth=oauth)
+	credentials = parse_qs(r.content)
+	session["screen_name"] = credentials.get(b'screen_name')[0]
+	return credentials.get(b'oauth_token')[0],credentials.get(b'oauth_token_secret')[0]
+
+@app.route('/twitter')
+def twitter():
+	request_token = get_request_token_oauth1()
+	authorize_url = AUTHENTICATE_URL + request_token.decode("utf-8")
+	session["request_token"]=request_token.decode("utf-8")
+	return redirect(authorize_url)
+
+@app.route('/callback', methods=["GET", "POST"])
+def callback():
+	request_token=session["request_token"]
+	verifier  = request.args.get("oauth_verifier")
+	access_token,access_token_secret= get_access_token_oauth1(request_token,verifier)
+	session["access_token"]= access_token.decode("utf-8")
+	session["access_token_secret"]= access_token_secret.decode("utf-8")
+	return """<html><head></head><body>
+	<form method="POST" action="/twittear">
+	<input name="status_update" type="text" value="hello"/>
+	<input type="submit" value="Send"/>
+	</form></body></html>"""
+
+@app.route('/twittear', methods=["POST"])
+def twittear():
+	update = request.form["status_update"]
+	post = {"status": update}
+	access_token=session["access_token"]
+	access_token_secret=session["access_token_secret"]
+	oauth = OAuth1(CONSUMER_KEY,
+				client_secret=CONSUMER_SECRET,
+				resource_owner_key=access_token,
+				resource_owner_secret=access_token_secret)
+	url = update_url
+	r=requests.post(url, data=post, auth=oauth)
+	if r.status_code==200:
+		return redirect("https://twitter.com/#!/%s" % session["screen_name"])
 
 app.run('0.0.0.0',int(port), debug=True)
 
