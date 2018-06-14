@@ -37,7 +37,7 @@ def get_fecha(milisegundos):
 def get_tiempo(milisegundos):
 	segundos=(milisegundos/1000) -180 ## retraso de partida
 	tiempo=datetime.datetime.now()-datetime.datetime.fromtimestamp(segundos)
-	int(tiempo.seconds)/60
+	minutos=int(tiempo.seconds)/60
 	return minutos
 
 ## informacion jugador
