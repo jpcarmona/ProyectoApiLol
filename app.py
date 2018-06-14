@@ -138,7 +138,7 @@ def callback():
 @app.route('/twittear')
 def twittear():
 	lista=session['lista']
-	invocador=lista[0]['summonerName']
+	invocador=lista[0]['name']
 	modo=lista[1]['gameMode']
 	for jugador in lista[1]['participants']:
 		if jugador["summonerName"]==invocador:

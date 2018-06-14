@@ -586,3 +586,20 @@ input[type=submit]:hover {
 	background: Grey;
 	color: #691818 !important;
 }
+
+.twittear {
+	margin: -50px 0 50px 10%;
+	width: 750px;
+}
+
+.twittear button {
+	background-color: #2279CF;
+	color: black;
+	text-align: center;
+	box-shadow: 0px 0px 2px 5px #FC5252;
+	font-weight: bold;
+}
+
+.twittear button:hover {
+	background-color: #FC5252;
+}
