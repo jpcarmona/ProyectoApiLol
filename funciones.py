@@ -95,11 +95,11 @@ def get_idchampion(campeon):
 
 ## campeones gratuitos
 def get_freechampions(apikey,region):
-	url='https://'+region+'.api.riotgames.com/lol/platform/v3/champions?freeToPlay=true'
+	url='https://'+region+'.api.riotgames.com/lol/platform/v3/champion-rotations'
 	doc=get_requests(apikey,url)
 	doc_req={}
-	for champion in doc['champions']:
-		campeon=get_champion(champion['id'])
+	for champion in doc['freeChampionIds']:
+		campeon=get_champion(champion)
 		doc_req[campeon['nombre']]='http://ddragon.leagueoflegends.com/cdn/img/champion/loading/'+campeon['imagen']+'_0.jpg'
 	return doc_req
 
